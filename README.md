@@ -5,6 +5,7 @@ displays. Drag through the fold instead of only checking two fixed
 screenshots, since Apple's continuous-resizability model means a layout
 can break at any width in between, not just at the two named states.
 
+![webpage_screenshot](<Screenshot 2026-09-12 131329.png>)
 
 ## Notes on iframe embedding
 
