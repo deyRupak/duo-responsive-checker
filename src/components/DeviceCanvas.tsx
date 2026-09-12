@@ -14,6 +14,11 @@ export default function DeviceCanvas({ url, foldProgress, orientation }: DeviceC
   const { width, height } = getFrameSize(foldProgress, orientation)
   const isOpen = isOpenState(foldProgress)
   const iframeRef = useRef<HTMLIFrameElement>(null)
+  const [isLoading, setIsLoading] = useState(false)
+
+  useEffect(() => {
+    setIsLoading(Boolean(url))
+  }, [url])
 
   const [spinAnim, setSpinAnim] = useState<'' | 'spinCw' | 'spinCcw'>('')
   const prevOrientation = useRef(orientation)
@@ -99,10 +104,12 @@ export default function DeviceCanvas({ url, foldProgress, orientation }: DeviceC
               src={url}
               title="Site under test"
               className={styles.iframe}
+              onLoad={() => setIsLoading(false)}
             />
           ) : (
             <div className={styles.placeholder}>Enter a URL above to start testing</div>
           )}
+          {url && <div className={styles.loadingBar} data-visible={isLoading} aria-hidden="true" />}
         </div>
       </div>
     </div>
