@@ -14,6 +14,7 @@ export default function DeviceCanvas({ url, foldProgress, orientation }: DeviceC
   const { width, height } = getFrameSize(foldProgress, orientation)
   const isOpen = isOpenState(foldProgress)
   const iframeRef = useRef<HTMLIFrameElement>(null)
+
   const [spinAnim, setSpinAnim] = useState<'' | 'spinCw' | 'spinCcw'>('')
   const prevOrientation = useRef(orientation)
   const wasOpen = useRef(isOpen)
@@ -41,13 +42,13 @@ export default function DeviceCanvas({ url, foldProgress, orientation }: DeviceC
 
   const hingeAxis: 'vertical' | 'horizontal' = orientation === 'landscape' ? 'vertical' : 'horizontal'
 
-  const frameStyle = useMemo(() => {
-    const ratio = width / height
-    return {
-      width: `min(100%, ${width}px, calc(64vh * ${ratio}))`,
-      aspectRatio: `${width} / ${height}`,
-    }
-  }, [width, height])
+  const frameStyle = useMemo(
+    () => ({
+      width: `${width}px`,
+      height: `${height}px`,
+    }),
+    [width, height],
+  )
 
   return (
     <div className={styles.stage}>
