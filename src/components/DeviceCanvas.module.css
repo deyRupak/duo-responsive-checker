@@ -1,0 +1,167 @@
+.stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+}
+
+.frame {
+  position: relative;
+  background: #f6f6fa;
+  transition: width 0.4s ease-out, height 0.4s ease-out;
+  max-width: 100%;
+  max-height: 70vh;
+}
+
+.spinCw {
+  animation: spinCw 0.4s ease-in-out;
+}
+
+.spinCcw {
+  animation: spinCcw 0.4s ease-in-out;
+}
+
+@keyframes spinCw {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(90deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes spinCcw {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(-90deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.chrome {
+  position: absolute;
+  inset: 0;
+  background: var(--bezel);
+  box-shadow: 0 18px 40px -20px rgba(20, 21, 26, 0.45);
+  opacity: 0;
+  transform: scale(0.985);
+  transition: opacity 0.28s ease, transform 0.28s ease;
+  pointer-events: none;
+}
+
+.chrome[data-visible='true'] {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.hingeEdge {
+  position: absolute;
+  left: 3px;
+  top: 6%;
+  bottom: 6%;
+  width: 2px;
+  background: rgba(255, 255, 255, 0.55);
+  border-radius: 2px;
+}
+
+.cameraOuter {
+  position: absolute;
+  top: 5%;
+  right: 10%;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: #000;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.08);
+}
+
+.hingeCenterVertical {
+  position: absolute;
+  top: 8px;
+  bottom: 8px;
+  left: 50%;
+  width: 4px;
+  transform: translateX(-50%);
+  background: var(--hinge);
+  border-radius: 2px;
+}
+
+.hingeCenterHorizontal {
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  top: 50%;
+  height: 4px;
+  transform: translateY(-50%);
+  background: var(--hinge);
+  border-radius: 2px;
+}
+
+.cameraInnerLandscape {
+  position: absolute;
+  top: 8%;
+  left: calc(50% + 10%);
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #000;
+}
+
+.cameraInnerPortrait {
+  position: absolute;
+  top: calc(50% - 14%);
+  right: 8%;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #000;
+}
+
+.content {
+  position: absolute;
+  background: #fff;
+  overflow: hidden;
+  /* Deliberately not rounded: content-edge bugs (overflow, clipping)
+     should be visible right at the true screen edge, not hidden
+     under a decorative bezel curve. */
+}
+
+.iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+  background: #fff;
+}
+
+.placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink-soft);
+  font-size: 0.85rem;
+  text-align: center;
+  padding: 1rem;
+}
+
+.notice {
+  max-width: 28rem;
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+  text-align: center;
+  margin: 0;
+}

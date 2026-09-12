@@ -1,0 +1,35 @@
+.bar {
+  display: flex;
+  gap: 0.5rem;
+  width: 100%;
+  max-width: 32rem;
+}
+
+.input {
+  flex: 1;
+  padding: 0.6rem 0.85rem;
+  font-size: 0.95rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--ink);
+}
+
+.input::placeholder {
+  color: var(--ink-soft);
+}
+
+.button {
+  padding: 0.6rem 1.1rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  background: var(--signal);
+  color: #fff;
+  cursor: pointer;
+}
+
+.button:hover {
+  background: #1d3fa0;
+}
